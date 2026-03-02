@@ -1,0 +1,220 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure PDF Encryptor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+
+        .upload-section {
+            text-align: center;
+        }
+
+        input[type="file"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 14px 35px;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .encrypt-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .decrypt-btn {
+            background: #f5576c;
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .info-section ul {
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🔐 Secure PDF Encryptor / Decryptor</h1>
+    <p>Protect your PDF files with strong AES-256 encryption</p>
+</header>
+
+<div class="main-container">
+
+    <!-- Upload Card -->
+    <div class="card upload-section">
+        <h2>Upload Your PDF</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".pdf" required>
+            <input type="password" name="password" placeholder="Enter strong password" required minlength="4">
+
+            <div class="btn-group">
+                <button name="action" value="encrypt" class="encrypt-btn">🔒 Encrypt PDF</button>
+                <button name="action" value="decrypt" class="decrypt-btn">🔓 Decrypt PDF</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Features -->
+    <div class="card">
+        <h2>🛡 Security Features</h2>
+        <div class="features">
+            <div class="feature-box">
+                <h3>AES-256 Encryption</h3>
+                <p>Industry-standard symmetric encryption for strong data protection.</p>
+            </div>
+            <div class="feature-box">
+                <h3>PBKDF2 Key Derivation</h3>
+                <p>100,000 iterations using SHA-256 to protect against brute-force attacks.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Random Salt & IV</h3>
+                <p>Each file uses unique cryptographic randomness for maximum security.</p>
+            </div>
+            <div class="feature-box">
+                <h3>In-Memory Processing</h3>
+                <p>No files are stored on the server — everything runs securely in memory.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="card info-section">
+        <h2>⚙ How It Works</h2>
+        <ul>
+            <li>Password is converted into a secure encryption key using PBKDF2.</li>
+            <li>File is padded using PKCS7 to fit AES block size.</li>
+            <li>Encryption uses AES-256 in CBC mode.</li>
+            <li>Encrypted file contains Salt + IV + Ciphertext.</li>
+            <li>During decryption, salt and IV are extracted automatically.</li>
+        </ul>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="card info-section">
+        <h2>🔐 Best Security Practices</h2>
+        <ul>
+            <li>Use a strong password (minimum 8–12 characters).</li>
+            <li>Avoid common or reused passwords.</li>
+            <li>Use HTTPS if deploying publicly.</li>
+            <li>Disable debug mode in production.</li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Secure PDF Encryptor | Built with Flask & Cryptography</p>
+</footer>
+
+</body>
+</html>
