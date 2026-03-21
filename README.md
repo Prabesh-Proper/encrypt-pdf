@@ -33,7 +33,7 @@ reduces the risk of interception (e.g., Man-in-the-Middle attacks).
 ### 1️⃣ Clone the Repository
 
 ``` bash
-git clone https://github.com/yourusername/secure-pdf-encryptor.git
+git clone https://github.com/Prabesh-Proper/encrypt-pdf.git
 cd secure-pdf-encryptor
 ```
 
